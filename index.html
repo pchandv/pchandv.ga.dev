@@ -55,7 +55,7 @@
 
     <h2>Feedback Form</h2>
     
-    <form id="feedbackForm" method="post" onsubmit="trackFeedback('Question 1', document.getElementById('question1').value); trackFeedback('Question 2', document.getElementById('question2').value);">
+    <form id="feedbackForm" method="post" onsubmit="trackFeedback('Question 1', document.getElementById('question1').value); trackFeedback('Question 2', document.getElementById('question2').value); return;">
         <label for="question1">Question 1: How satisfied are you with our service?</label>
         <select id="question1" name="question1">
             <option value="5">Very Satisfied</option>
