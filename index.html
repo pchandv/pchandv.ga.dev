@@ -55,7 +55,7 @@
                 'event_label': question,
                 'value': answer
             });
-            return;
+            return false; // Prevent default form submission
         }
     </script>
 </head>
@@ -66,7 +66,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
     <h2>Feedback Form</h2>
     
-    <form id="feedbackForm" method="post" onsubmit="trackFeedback('Question 1', document.getElementById('question1').value); trackFeedback('Question 2', document.getElementById('question2').value); return;">
+    <form id="feedbackForm" onsubmit="trackFeedback('Question 1', document.getElementById('question1').value); trackFeedback('Question 2', document.getElementById('question2').value); return false;">
         <label for="question1">Question 1: How satisfied are you with our service?</label>
         <select id="question1" name="question1">
             <option value="5">Very Satisfied</option>
