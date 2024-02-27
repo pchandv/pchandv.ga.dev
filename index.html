@@ -53,7 +53,8 @@
             gtag('event', 'Dev_Feedback', {
                 'event_category': 'Dev_User_Feedback',
                 'event_label': question,
-                'value': answer
+                'value': answer,
+                'custom_dimension_name': 'Dev_Feedback_Dimension'
             });
             return false; // Prevent default form submission
         }
