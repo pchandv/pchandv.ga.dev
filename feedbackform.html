@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+    <!-- Google Analytics tracking code -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA_TRACKING_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'YOUR_GA_TRACKING_ID');
+
+        // Function to track feedback submission
+        function trackFeedback(question, answer) {
+            gtag('event', 'Feedback', {
+                'event_category': 'User Feedback',
+                'event_label': question,
+                'value': answer
+            });
+        }
+    </script>
+</head>
+<body>
+
+    <h2>Feedback Form</h2>
+    
+    <form id="feedbackForm" method="post" onsubmit="trackFeedback('Question 1', document.getElementById('question1').value); trackFeedback('Question 2', document.getElementById('question2').value);">
+        <label for="question1">Question 1: How satisfied are you with our service?</label>
+        <select id="question1" name="question1">
+            <option value="5">Very Satisfied</option>
+            <option value="4">Satisfied</option>
+            <option value="3">Neutral</option>
+            <option value="2">Dissatisfied</option>
+            <option value="1">Very Dissatisfied</option>
+        </select>
+
+        <label for="question2">Question 2: How likely are you to recommend us to others?</label>
+        <select id="question2" name="question2">
+            <option value="5">Very Likely</option>
+            <option value="4">Likely</option>
+            <option value="3">Neutral</option>
+            <option value="2">Unlikely</option>
+            <option value="1">Very Unlikely</option>
+        </select>
+
+        <input type="submit" value="Submit Feedback">
+    </form>
+
+</body>
+</html>
