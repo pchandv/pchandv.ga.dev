@@ -49,9 +49,18 @@
         gtag('config', 'G-DPKXE8TET8');
 
         // Function to track feedback submission
+        // function trackFeedback(question, answer) {
+        //     gtag('event', 'Dev_Feedback', {
+        //         'event_category': 'Dev_User_Feedback',
+        //         'event_label': question,
+        //         'value': answer,
+        //         'custom_dimension_name': 'Dev_Feedback_Dimension'
+        //     });
+        //     return false; // Prevent default form submission
+        // }
         function trackFeedback(question, answer) {
-            gtag('event', 'Dev_Feedback', {
-                'event_category': 'Dev_User_Feedback',
+            gtag('event', answer, {
+                'event_category': question,
                 'event_label': question,
                 'value': answer,
                 'custom_dimension_name': 'Dev_Feedback_Dimension'
