@@ -50,10 +50,10 @@
 
         // Function to track feedback submission
         function trackFeedback(question, answer) {
-            gtag('event', question, {
-                'event_category': question,
-                'event_label': answer,
-                'value': answer
+            gtag('event', answer, {
+                'event_category': question//,
+               // 'event_label': answer,
+                //'value': answer
             });
             return false; // Prevent default form submission
         }
