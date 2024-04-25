@@ -36,7 +36,7 @@
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-KK9BXVLX');</script>
+    })(window,document,'script','dataLayer','GTM-5398KNTW');</script>
     <!-- End Google Tag Manager -->
 
     <!-- Google Analytics tracking code -->
@@ -46,31 +46,46 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', 'G-DPKXE8TET8');
-
+        //gtag('config', 'G-DPKXE8TET8');
+        gtag('config', 'G-2S1XLPLSJP');
+        
         // Function to track feedback submission
         function trackFeedback(question, answer) {
             gtag('event', answer, {
-                'event_category': question//,
-               // 'event_label': answer,
-                //'value': answer
+                'event_category': question,
+                'locationId': 9,
+                'feedBackVersion': '21',
+                'kioskV2Version': '23.09'
             });
             return false; // Prevent default form submission
         }
 
         // Function to submit random feedback to Google Analytics
         function submitRandomFeedback() {
-            var question1 = 'How satisfied are you with our service';
-            var question2 = 'How likely are you to recommend us to others';
+            document.getElementById('KioskV2-start-betting').click();
+            document.getElementById('KioskV2-selection').click();
+            document.getElementById('KioskV2-Place-Bet').click();
+            document.getElementById('KioskV2-confirm-Bet').click();
+            document.getElementById('KioskV2-Done').click();
+
+            var question1 = 'Question 1: How satisfied are you with our service?';
+            var question2 = 'Question 2: How likely are you to recommend us to others?';
+            var question2 = 'Question 3: Do you want to try again?';
 
             var answersQ1 = ['VerySatisfied', 'Satisfied', 'Neutral', 'Dissatisfied', 'VeryDissatisfied'];
             var answersQ2 = ['VeryLikely', 'Likely', 'Neutral', 'Unlikely', 'VeryUnlikely'];
+            var answersQ3 = ['Yes', 'No'];
 
             var randomAnswerQ1 = answersQ1[Math.floor(Math.random() * answersQ1.length)];
             var randomAnswerQ2 = answersQ2[Math.floor(Math.random() * answersQ2.length)];
+            var randomAnswerQ3 = answersQ3[Math.floor(Math.random() * answersQ3.length)];
 
             trackFeedback(question1, randomAnswerQ1);
             trackFeedback(question2, randomAnswerQ2);
+            trackFeedback(question2, randomAnswerQ3);
+
+
+
         }
         // Periodically submit the form with random feedback
        // setInterval(submitRandomFeedback, 5000); // Adjust the interval as needed (in milliseconds)
@@ -79,8 +94,12 @@
 <body>
     <h1>Version: 1</h1>
     <h2>Feedback Form</h2>
-        
-    <form id="feedbackForm" onsubmit="trackFeedback('How satisfied are you with our service', document.getElementById('question1').value); trackFeedback('How likely are you to recommend us to others', document.getElementById('question2').value); return false;">
+     <button id="KioskV2-start-betting">start-betting</button>   
+     <button id="KioskV2-selection">selection</button>   
+     <button id="KioskV2-Place-Bet">Place-Bet</button>   
+     <button id="KioskV2-confirm-Bet">confirm-Bet</button>   
+     <button id="KioskV2-Done">done</button>   
+    <form id="feedbackForm" onsubmit="trackFeedback('How satisfied are you with our service', document.getElementById('question1').value); trackFeedback('How likely are you to recommend us to others', document.getElementById('question2').value);trackFeedback('Question 3: Do you want to try again?', document.getElementById('question3').value); return false;">
         <label for="question1">Question 1: How satisfied are you with our service?</label>
         <select id="question1" name="question1">
             <option value="VerySatisfied">Very Satisfied</option>
@@ -98,7 +117,11 @@
             <option value="Unlikely">Unlikely</option>
             <option value="VeryUnlikely">Very Unlikely</option>
         </select>
-
+        <label for="question3">Question 3: Do you want to try again?</label>
+        <select id="question3" name="question3">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
         <input type="submit" value="Submit Feedback">
     </form>
     
