@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,19 +10,23 @@
             font-family: Arial, sans-serif;
             margin: 20px;
         }
+
         form {
             max-width: 400px;
             margin: 0 auto;
         }
+
         label {
             display: block;
             margin-bottom: 10px;
         }
+
         select {
             width: 100%;
             padding: 8px;
             margin-bottom: 20px;
         }
+
         input[type="submit"] {
             background-color: #4CAF50;
             color: white;
@@ -32,23 +37,42 @@
         }
     </style>
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-5398KNTW');</script>
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5398KNTW');</script>
     <!-- End Google Tag Manager -->
 
     <!-- Google Analytics tracking code -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2S1XLPLSJP"></script>
     <script>
+        function trackClickEvents() {
+            document.addEventListener('click', function (event) {
+                var element = event.target;
+                var elementId = element.id;
+                var elementClass = element.className;
+
+                if (elementId || elementClass) {
+                    gtag('event', 'click', {
+                        'event_category': 'Button Click',
+                        'event_label': elementId || elementClass
+                    });
+                }
+            });
+        }
+
+
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
         //gtag('config', 'G-DPKXE8TET8');
         gtag('config', 'G-2S1XLPLSJP');
-        
+
         // Function to track feedback submission
         function trackFeedback(question, answer) {
             gtag('event', answer, {
@@ -87,19 +111,24 @@
 
 
         }
+        function setRandomFeedback() {
+            setInterval(submitRandomFeedback, 5000);
+        }
         // Periodically submit the form with random feedback
-        setInterval(submitRandomFeedback, 5000); // Adjust the interval as needed (in milliseconds)
+        // setInterval(submitRandomFeedback, 5000); // Adjust the interval as needed (in milliseconds)
     </script>
 </head>
+
 <body>
     <h1>Version: 1</h1>
     <h2>Feedback Form</h2>
-     <button id="KioskV2-start-betting">start-betting</button>   
-     <button id="KioskV2-selection">selection</button>   
-     <button id="KioskV2-Place-Bet">Place-Bet</button>   
-     <button id="KioskV2-confirm-Bet">confirm-Bet</button>   
-     <button id="KioskV2-Done">done</button>   
-    <form id="feedbackForm" onsubmit="trackFeedback('How satisfied are you with our service', document.getElementById('question1').value); trackFeedback('How likely are you to recommend us to others', document.getElementById('question2').value);trackFeedback('Question 3: Do you want to try again?', document.getElementById('question3').value); return false;">
+    <button id="KioskV2-start-betting">start-betting</button>
+    <button id="KioskV2-selection">selection</button>
+    <button id="KioskV2-Place-Bet">Place-Bet</button>
+    <button id="KioskV2-confirm-Bet">confirm-Bet</button>
+    <button id="KioskV2-Done">done</button>
+    <form id="feedbackForm"
+        onsubmit="trackFeedback('How satisfied are you with our service', document.getElementById('question1').value); trackFeedback('How likely are you to recommend us to others', document.getElementById('question2').value);trackFeedback('Question 3: Do you want to try again?', document.getElementById('question3').value); return false;">
         <label for="question1">Question 1: How satisfied are you with our service?</label>
         <select id="question1" name="question1">
             <option value="VerySatisfied">Very Satisfied</option>
@@ -124,15 +153,18 @@
         </select>
         <input type="submit" value="Submit Feedback">
     </form>
-    
+
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KK9BXVLX"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KK9BXVLX" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     <button onclick="submitRandomFeedback()">Submit Random Feedback</button>
+    <button onclick="setRandomFeedback()">set RandomFeedback with Timer</button>
+    <button onclick="trackClickEvents()">trackClickEvents</button>
 
     <!-- <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdM4BX_12n0cTCAK86rkD8LAC_wAD1P_G2L3u5ygGBaF9IR4Q/viewform?embedded=true" width="700" height="520" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     <iframe width="600" height="450" src="https://lookerstudio.google.com/embed/reporting/9cd295f7-5c32-4f39-a473-a6caddb01b02/page/yHZrD" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe> -->
 </body>
+
 </html>
