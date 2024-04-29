@@ -57,7 +57,7 @@
                 var elementClass = element.className;
 
                 if (elementId || elementClass) {
-                    gtag('event', 'click', {
+                    gtag('event', elementId || elementClass, {
                         'event_category': 'Button Click',
                         'event_label': elementId || elementClass
                     });
