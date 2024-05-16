@@ -48,7 +48,7 @@
     <!-- End Google Tag Manager -->
 
     <!-- Google Analytics tracking code -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2S1XLPLSJP"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z06QC81N45"></script>
     <script>
         function trackClickEvents() {
             document.addEventListener('click', function (event) {
@@ -71,15 +71,19 @@
         gtag('js', new Date());
 
         //gtag('config', 'G-DPKXE8TET8');
-        gtag('config', 'G-2S1XLPLSJP');
+        //gtag('config', 'G-2S1XLPLSJP');
+        gtag('config', 'G-Z06QC81N45');
 
         // Function to track feedback submission
         function trackFeedback(question, answer) {
-            gtag('event', answer, {
-                'event_category': question,
-                'locationId': 9,
-                'feedBackVersion': '21',
-                'kioskV2Version': '23.09'
+            gtag('event', 'KioskV2-feedback-V1', {
+                'event_category':'KioskV2-feedback-V1',
+                'question': question,
+                'answer': answer,
+            });
+            gtag('event', question, {
+                'event_category': 'KioskV2-feedback-V2',
+                'answer': answer,
             });
             return false; // Prevent default form submission
         }
