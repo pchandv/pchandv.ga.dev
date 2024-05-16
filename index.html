@@ -128,8 +128,9 @@
         }
         function updateClock() {
   var now = new Date();
+  var datestring = now.toLocaleDateString();
   var timeString = now.toLocaleTimeString();
-  document.getElementById("clock").innerText = timeString;
+  document.getElementById("clock").innerText =datestring +' - '+ timeString;
 }
 
 // Update the clock every second
@@ -143,7 +144,7 @@ updateClock();
 </head>
 
 <body>
-    <div id="clock"></div>
+    <div id="clock" style="float: left;"></div>
     <h1>Version: 1.1.2</h1>
     <h2>Feedback Form</h2>
     <button id="KioskV2-start-betting">start-betting</button>
